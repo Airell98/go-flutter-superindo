@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.hacktiv8.flavour_app_demo",
+  "variantName": "processStagingResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 1,
+      "versionName": "1.0.0-beta.1",
+      "outputFile": "app-staging.apk"
+    }
+  ]
+}

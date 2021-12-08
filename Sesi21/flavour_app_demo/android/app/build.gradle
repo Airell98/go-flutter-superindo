@@ -1,0 +1,129 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 30
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.hacktiv8.flavour_app_demo"
+        minSdkVersion 19
+        targetSdkVersion 30
+        multiDexEnabled true
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        project.ext.set("devVersionSubNumber", "1")
+        project.ext.set("stagingVersionSubNumber", "1")
+    }
+
+    signingConfigs {
+        debug {
+            if (project.hasProperty('DEV_STORE_FILE')) {
+                storeFile file(DEV_STORE_FILE)
+                storePassword DEV_STORE_PASSWORD
+                keyAlias DEV_KEY_ALIAS
+                keyPassword DEV_KEY_PASSWORD
+            }
+        }
+        staging {
+            if (project.hasProperty('STAGING_STORE_FILE')) {
+                storeFile file(STAGING_STORE_FILE)
+                storePassword STAGING_STORE_PASSWORD
+                keyAlias STAGING_KEY_ALIAS
+                keyPassword STAGING_KEY_PASSWORD
+            }
+        }
+        release {
+            //Use build apk instead. Different keystore
+        }
+    }
+
+    buildTypes {
+         debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+           applicationIdSuffix ".dev"
+            versionNameSuffix "-alpha.$project.devVersionSubNumber"
+            buildConfigField 'String', 'BASE_URL_APPS', DEV_BASE_URL
+            buildConfigField 'String', 'SERVER_KEY', DEV_SERVER_KEY
+            matchingFallbacks = ['debug']
+        }
+
+
+        staging {
+            debuggable true
+            signingConfig signingConfigs.staging
+            applicationIdSuffix ".uat"
+            versionNameSuffix "-beta.$project.stagingVersionSubNumber"
+            buildConfigField 'String', 'BASE_URL_APPS', STAGING_BASE_URL
+            buildConfigField 'String', 'SERVER_KEY', STAGING_SERVER_KEY
+            matchingFallbacks = ['debug']
+            // Optional for analytics with firebase
+            // firebaseCrashlytics {
+            //     mappingFileUploadEnabled true
+            // }
+        }
+       
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+            debuggable false
+            buildConfigField 'String', 'BASE_URL_APPS', PROD_BASE_URL
+            buildConfigField 'String', 'SERVER_KEY', PROD_SERVER_KEY
+            matchingFallbacks = ['release']
+            //Optional for analytics with firebase
+            // firebaseCrashlytics {
+            //     mappingFileUploadEnabled true
+            // }
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
+}
