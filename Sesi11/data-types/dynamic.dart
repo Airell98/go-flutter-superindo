@@ -11,4 +11,4 @@ void main() {
   dynamic val = "10";
   
   int num = val; //<-- error at compile-time
-};
+}
