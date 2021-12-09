@@ -65,6 +65,8 @@ class LoginScreen extends StatelessWidget {
         onPressed: () async {
           Provider.of<AppStateManager>(context, listen: false)
               .login('mockUsername', 'mockPassword');
+          Navigator.pushNamed(context, '/home', arguments: 0);
+          
         },
       ),
     );

@@ -8,8 +8,8 @@ import '../models/models.dart';
 class WebViewScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
-      name: FooderlichPages.raywenderlich,
-      key: ValueKey(FooderlichPages.raywenderlich),
+      name: FooderlichPages.example,
+      key: ValueKey(FooderlichPages.example),
       child: const WebViewScreen(),
     );
   }
@@ -32,10 +32,10 @@ class WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('raywenderlich.com'),
+        title: const Text('example.com'),
       ),
       body: const WebView(
-        initialUrl: 'https://www.raywenderlich.com/',
+        initialUrl: 'https://www.example.com/',
       ),
     );
   }

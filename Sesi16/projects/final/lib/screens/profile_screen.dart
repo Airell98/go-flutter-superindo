@@ -5,18 +5,25 @@ import '../components/circle_image.dart';
 import '../models/models.dart';
 
 class ProfileScreen extends StatefulWidget {
-  static MaterialPage page(User user) {
-    return MaterialPage(
-      name: FooderlichPages.profilePath,
-      key: ValueKey(FooderlichPages.profilePath),
-      child: ProfileScreen(user: user),
-    );
-  }
+  // static MaterialPage page(User user) {
+  //   return MaterialPage(
+  //     name: FooderlichPages.profilePath,
+  //     key: ValueKey(FooderlichPages.profilePath),
+  //     child: ProfileScreen(user: user),
+  //   );
+  // }
 
-  final User user;
-  const ProfileScreen({
+  User user = User(
+    firstName: 'Stef',
+    lastName: 'Patt',
+    role: 'Flutterista',
+    profileImageUrl: 'assets/profile_pics/person_stef.jpeg',
+    points: 100,
+    darkMode: false,
+  );
+  ProfileScreen({
     Key? key,
-    required this.user,
+    
   }) : super(key: key);
 
   @override
@@ -56,10 +63,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         buildDarkModeRow(),
         ListTile(
-          title: const Text('View raywenderlich.com'),
+          title: const Text('View example.com'),
           onTap: () {
             Provider.of<ProfileManager>(context, listen: false)
-                .tapOnRaywenderlich(true);
+                .tapOnexample(true);
           },
         ),
         ListTile(

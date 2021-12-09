@@ -71,8 +71,8 @@ class AppRouter extends RouterDelegate
                 // No create
               }),
         if (profileManager.didSelectUser)
-          ProfileScreen.page(profileManager.getUser),
-        if (profileManager.didTapOnRaywenderlich) WebViewScreen.page()
+          // ProfileScreen.page(profileManager.getUser),
+          if (profileManager.didTapOnexample) WebViewScreen.page()
       ],
     );
   }
@@ -100,8 +100,8 @@ class AppRouter extends RouterDelegate
       profileManager.tapOnProfile(false);
     }
 
-    if (route.settings.name == FooderlichPages.raywenderlich) {
-      profileManager.tapOnRaywenderlich(false);
+    if (route.settings.name == FooderlichPages.example) {
+      profileManager.tapOnexample(false);
     }
     return true;
   }

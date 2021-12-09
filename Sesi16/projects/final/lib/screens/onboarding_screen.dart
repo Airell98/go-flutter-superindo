@@ -61,6 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           onPressed: () {
             Provider.of<AppStateManager>(context, listen: false)
                 .completeOnboarding();
+               Navigator.pushNamed(context, '/login');
           },
         ),
       ],

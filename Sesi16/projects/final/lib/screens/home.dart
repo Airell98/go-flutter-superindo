@@ -64,6 +64,7 @@ class _HomeState extends State<Home> {
             onTap: (index) {
               Provider.of<AppStateManager>(context, listen: false)
                   .goToTab(index);
+               Navigator.pushNamed(context, '/home', arguments: index);
             },
             items: <BottomNavigationBarItem>[
               const BottomNavigationBarItem(

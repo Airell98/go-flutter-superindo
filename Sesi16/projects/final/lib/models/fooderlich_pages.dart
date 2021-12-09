@@ -5,6 +5,6 @@ class FooderlichPages {
   static String home = '/';
   static String groceryItemDetails = '/item';
   static String profilePath = '/profile';
-  static String raywenderlich = '/raywenderlich';
+  static String example = '/example';
   static String accountPath = '/account';
 }

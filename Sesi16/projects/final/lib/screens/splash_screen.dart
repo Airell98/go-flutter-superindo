@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:async';
 
 import '../models/models.dart';
 
@@ -20,9 +21,21 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+    _timeout();
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     Provider.of<AppStateManager>(context, listen: false).initializeApp();
+  }
+
+  void _timeout() {
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacementNamed(context, '/onboarding');
+    });
   }
 
   @override
