@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "797096506043",
+    "project_id": "flavour-demo-app",
+    "storage_bucket": "flavour-demo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797096506043:android:0621be5c21ee145fd86f9e",
+        "android_client_info": {
+          "package_name": "com.hacktiv8.flavour_app_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797096506043-17b5eeqfcapnmej4rmoenh5ijlevqmr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hacktiv8.flavour_app_demo",
+            "certificate_hash": "baafe29374f96d639a35a88455acda8d2a1c4ec6"
+          }
+        },
+        {
+          "client_id": "797096506043-pk39sce87a8jhdn94oeb305rmf1nm9sr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYDwdwZW2X0XvmDkUOacykFfu25AdV7sI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797096506043-pk39sce87a8jhdn94oeb305rmf1nm9sr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
