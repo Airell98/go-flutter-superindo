@@ -1,0 +1,10 @@
+name: async_programminig
+description: Learning Http Request.
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.11.0 <3.0.0"
+dependencies: 
+  http: ^0.13.4
